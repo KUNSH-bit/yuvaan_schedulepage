@@ -2,20 +2,8 @@
 "use client";
 
 import { useState } from "react";
-import dynamic from "next/dynamic";
+import RaceTrackScene from "./RaceTrack";
 import styles from "./race-schedule.module.css";
-
-const RaceTrackScene = dynamic(
-  () => import("@/components/race-schedule/RaceTrackScene"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className={styles.loading}>
-        PREPARING THE CIRCUIT...
-      </div>
-    ),
-  }
-);
 
 type Event = {
   id: number;
