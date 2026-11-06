@@ -42,7 +42,6 @@ const schedule: Record<string, Event[]> = {
       description: "A live musical showdown featuring student bands.",
     },
   ],
-
   "DAY 02": [
     {
       time: "09:30 AM",
@@ -73,7 +72,6 @@ const schedule: Record<string, Event[]> = {
       description: "The headline performance of the festival.",
     },
   ],
-
   "DAY 03": [
     {
       time: "10:00 AM",
@@ -151,21 +149,27 @@ function App() {
 
           <p className="hero-description">
             Three days. Countless events. One unforgettable ride.
-            Find your events and get ready for the action.
+            Pick your events and race into Yuvaan 2K27.
           </p>
 
           <a className="hero-button" href="#schedule">
             VIEW THE SCHEDULE <span>↓</span>
           </a>
+
+          <div className="hero-tags">
+            <span>RACE MODE: ON</span>
+            <span>EST. 2027</span>
+            <span>NO LIMITS</span>
+          </div>
         </div>
 
         <div className="hero-number">
           <span>EDITION</span>
           <strong>027</strong>
+          <span className="hero-lightning">⚡</span>
         </div>
       </section>
 
-      {/* SCHEDULE */}
       <section className="schedule-section" id="schedule">
         <div className="section-heading schedule-heading">
           <div>
@@ -183,9 +187,7 @@ function App() {
             <button
               key={day}
               className={
-                activeDay === day
-                  ? "day-button active"
-                  : "day-button"
+                activeDay === day ? "day-button active" : "day-button"
               }
               onClick={() => changeDay(day)}
             >
@@ -208,15 +210,12 @@ function App() {
                 }
                 onClick={() => setSelectedEvent(index)}
               >
-                <div className="event-time">
-                  {event.time}
-                </div>
+                <div className="event-time">{event.time}</div>
 
                 <div className="event-info">
                   <span className="event-category">
                     {event.category}
                   </span>
-
                   <h3>{event.title}</h3>
                   <p>{event.venue}</p>
                 </div>
@@ -230,18 +229,14 @@ function App() {
 
           <aside className="event-details">
             <div className="details-top">
-              <span>NOW SELECTED</span>
-
+              <span>YOUR SELECTED EVENT</span>
               <span className="details-number">
                 0{selectedEvent + 1} / 0{events.length}
               </span>
             </div>
 
             <div className="details-content">
-              <p className="eyebrow">
-                {currentEvent.category}
-              </p>
-
+              <p className="eyebrow">{currentEvent.category}</p>
               <h3>{currentEvent.title}</h3>
 
               <p className="details-description">
@@ -274,43 +269,35 @@ function App() {
         </div>
       </section>
 
-      {/* 3D CIRCUIT BELOW THE SCHEDULE */}
       <section className="track-section" id="circuit">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">THE DAY-SPECIFIC CIRCUIT</p>
-            <h2>{activeDay} / THE RACEWAY</h2>
+            <p className="eyebrow">THE MAIN EVENT</p>
+            <h2>TAKE THE DRIVER'S SEAT</h2>
           </div>
 
           <div className="track-legend">
-            <span>
-              <i className="legend-red" /> CHECKPOINT
-            </span>
-
-            <span>
-              <i className="legend-yellow" /> CURRENT EVENT
-            </span>
+            <span><i className="legend-red" /> CHECKPOINT</span>
+            <span><i className="legend-yellow" /> CURRENT EVENT</span>
           </div>
         </div>
 
-        <div className="track-frame">
-          <div className="track-top-label">
-            <span>YUVAAN GRAND PRIX</span>
-            <span>{activeDay} / LIVE 3D CIRCUIT</span>
-          </div>
+        <div className="track-intro">
+          <span>⚡ YUVAAN RACING CIRCUIT</span>
+          <span>{activeDay} / LIVE LAP</span>
+        </div>
 
-          <RaceTrackScene
-            key={activeDay}
-            day={activeDay}
-            events={events}
-            selected={selectedEvent}
-            onEventChange={setSelectedEvent}
-          />
+        <RaceTrackScene
+          key={activeDay}
+          day={activeDay}
+          events={events}
+          selected={selectedEvent}
+          onEventChange={setSelectedEvent}
+        />
 
-          <div className="track-bottom-label">
-            <span>LIGHTNING MODE / CONTINUOUS LAPS</span>
-            <span>FOLLOW THE CHECKPOINTS ↗</span>
-          </div>
+        <div className="track-caption">
+          <span>FOLLOW THE CAR. FIND YOUR NEXT EVENT.</span>
+          <span>95 // YUVAAN GRAND PRIX</span>
         </div>
       </section>
 
